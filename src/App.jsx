@@ -8,7 +8,8 @@ import Emergency from "./components/Emergency.jsx";
 import Expenses from "./components/Expenses.jsx";
 import AuthModal from "./components/AuthModal.jsx";
 import Profile from "./components/Profile.jsx";
-import CreditCardRecommendations from "./components/CreditCardRecommendations.jsx"; // <-- New import
+import CreditCardRecommendations from "./components/CreditCardRecommendations.jsx";
+import SignupPage from "./components/SignupForm.jsx"; // <-- New import
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -53,6 +54,8 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/signup-flow" element={<SignupPage />} />{" "}
+        {/* <-- New Route */}
         {isLoggedIn && <Route path="/dashboard" element={<Dashboard />} />}
         {isLoggedIn && <Route path="/expenses" element={<Expenses />} />}
         {isLoggedIn && <Route path="/tools" element={<Tools />} />}
@@ -63,8 +66,7 @@ function App() {
             path="/recommendations"
             element={<CreditCardRecommendations />}
           />
-        )}{" "}
-        {/* <-- New Route */}
+        )}
         <Route path="*" element={<Homepage />} />
       </Routes>
       <AuthModal

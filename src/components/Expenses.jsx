@@ -41,9 +41,10 @@ const PageTitle = styled.h2`
   font-size: 40px;
   font-weight: 700;
   margin-bottom: 20px;
-  background: linear-gradient(45deg, var(--electric-blue), var(--bright-cyan));
+  background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(144, 224, 239, 0.5);
 `;
 
 const TwoColumnLayout = styled.div`
@@ -67,7 +68,7 @@ const Card = styled.div`
 
     &:hover {
       transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), 0 0 25px var(--electric-blue);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), 0 0 25px var(--accent-blue);
     }
   }
 `;
@@ -101,57 +102,57 @@ const InputGroup = styled.div`
 const Label = styled.label`
   font-size: 16px;
   font-weight: 500;
-  color: var(--light-blue);
-  text-shadow: 0 0 8px rgba(224, 247, 250, 0.3);
+  color: var(--light-gray);
+  text-shadow: 0 0 8px rgba(239, 239, 239, 0.3);
 `;
 
 const Input = styled.input`
   padding: 15px;
-  border: 1px solid rgba(224, 247, 250, 0.2);
-  background: rgba(224, 247, 250, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
-  color: var(--light-blue);
+  color: var(--light-gray);
   font-size: 17px;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
   &:focus {
-    border-color: var(--electric-blue);
-    box-shadow: 0 0 8px var(--electric-blue);
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 8px var(--accent-blue);
   }
 `;
 
 const Select = styled.select`
   padding: 15px;
-  border: 1px solid rgba(224, 247, 250, 0.2);
-  background: rgba(224, 247, 250, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
-  color: var(--light-blue);
+  color: var(--light-gray);
   font-size: 17px;
   outline: none;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--light-blue)' width='24px' height='24px'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--light-gray)' width='24px' height='24px'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 15px top 50%;
   cursor: pointer;
   transition: box-shadow 0.3s ease;
 
   &:hover {
-    box-shadow: 0 0 8px var(--electric-blue);
+    box-shadow: 0 0 8px var(--accent-blue);
   }
 `;
 
 const Option = styled.option`
-  background-color: var(--navy-blue);
-  color: var(--light-blue);
+  background-color: var(--dark-black);
+  color: var(--light-gray);
 `;
 
 const AddExpenseButton = styled.button`
-  background: linear-gradient(45deg, var(--electric-blue), var(--bright-cyan));
+  background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
   border: none;
   border-radius: 50px;
   padding: 15px 30px;
-  color: var(--navy-blue);
+  color: var(--dark-black);
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -169,14 +170,14 @@ const ExpenseTable = styled.table`
 
   th,
   td {
-    border-bottom: 1px solid rgba(224, 247, 250, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     padding: 15px;
     text-align: left;
-    color: var(--light-blue);
+    color: var(--light-gray);
   }
 
   th {
-    background-color: rgba(224, 247, 250, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     font-weight: 600;
   }
 
@@ -197,8 +198,8 @@ const BillsHeader = styled.div`
     font-size: 24px;
     background: linear-gradient(
       45deg,
-      var(--electric-blue),
-      var(--bright-cyan)
+      var(--accent-purple),
+      var(--accent-blue)
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -217,11 +218,11 @@ const BillItem = styled.li`
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  border-bottom: 1px solid rgba(224, 247, 250, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   transition: background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
-    background-color: rgba(224, 247, 250, 0.05);
+    background-color: rgba(255, 255, 255, 0.05);
     transform: translateX(5px);
   }
 
@@ -249,10 +250,10 @@ const BillDetails = styled.div`
 const BillAmount = styled.span`
   font-size: 18px;
   font-weight: bold;
-  background: linear-gradient(45deg, var(--electric-blue), var(--bright-cyan));
+  background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  text-shadow: 0 0 10px rgba(144, 224, 239, 0.5);
 `;
 
 const Expenses = () => {
@@ -373,21 +374,35 @@ const Expenses = () => {
             >
               <CartesianGrid
                 strokeDasharray="3 3"
-                stroke="rgba(224, 247, 250, 0.3)"
+                stroke="rgba(255, 255, 255, 0.15)"
               />
-              <XAxis dataKey="category" stroke="var(--light-blue)" />
-              <YAxis stroke="var(--light-blue)" />
+              <XAxis dataKey="category" stroke="var(--light-gray)" />
+              <YAxis stroke="var(--light-gray)" />
               <Tooltip
-                cursor={{ fill: "rgba(224, 247, 250, 0.1)" }}
+                cursor={{ fill: "rgba(255, 255, 255, 0.1)" }}
                 contentStyle={{
                   background: "rgba(0,0,0,0.7)",
                   border: "none",
                   borderRadius: "5px",
                 }}
-                itemStyle={{ color: "var(--electric-blue)" }}
-                labelStyle={{ color: "var(--light-blue)" }}
+                itemStyle={{ color: "var(--accent-blue)" }}
+                labelStyle={{ color: "var(--light-gray)" }}
               />
-              <Bar dataKey="amount" fill="var(--electric-blue)" />
+              <Bar dataKey="amount" fill="url(#colorUv)" />
+              <defs>
+                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                  <stop
+                    offset="5%"
+                    stopColor="var(--accent-purple)"
+                    stopOpacity={0.8}
+                  />
+                  <stop
+                    offset="95%"
+                    stopColor="var(--accent-blue)"
+                    stopOpacity={0}
+                  />
+                </linearGradient>
+              </defs>
             </BarChart>
           </ResponsiveContainer>
         </ChartCard>

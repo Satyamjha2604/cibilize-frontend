@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const HomePageContainer = styled.div`
   display: flex;
@@ -31,9 +32,15 @@ const HeroTitle = styled.h2`
   font-weight: 800;
   margin-bottom: 25px;
   line-height: 1.1;
-  background: linear-gradient(45deg, var(--light-blue), var(--electric-blue));
+  background: linear-gradient(
+    45deg,
+    var(--accent-purple),
+    var(--accent-pink),
+    var(--accent-blue)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(144, 224, 239, 0.5);
 
   @media (max-width: 1024px) {
     font-size: 58px;
@@ -55,7 +62,7 @@ const HeroSubtitle = styled.p`
   line-height: 1.6;
   opacity: 0.9;
   margin: 0 auto;
-  color: var(--light-blue);
+  color: var(--light-gray);
 
   @media (max-width: 768px) {
     font-size: 20px;
@@ -66,22 +73,23 @@ const HeroSubtitle = styled.p`
   }
 `;
 
-const CallToActionButton = styled.button`
-  background: linear-gradient(45deg, var(--electric-blue), var(--bright-cyan));
+const CallToActionButton = styled(Link)`
+  background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
   border: none;
   border-radius: 50px;
   padding: 18px 45px;
   font-size: 20px;
-  color: var(--navy-blue);
+  color: var(--dark-black);
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-top: 40px;
+  text-decoration: none;
 
   &:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 15px var(--accent-blue);
   }
 
   @media (max-width: 768px) {
@@ -117,14 +125,25 @@ const FeatureCard = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), 0 0 15px var(--accent-purple);
+    }
   }
 
   h3 {
     font-size: 28px;
     margin-bottom: 12px;
-    background: linear-gradient(45deg, var(--light-blue), var(--electric-blue));
+    background: linear-gradient(
+      45deg,
+      var(--accent-purple),
+      var(--accent-blue)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 5px rgba(157, 78, 221, 0.3);
 
     @media (max-width: 768px) {
       font-size: 24px;
@@ -134,6 +153,7 @@ const FeatureCard = styled.div`
     font-size: 17px;
     opacity: 0.85;
     line-height: 1.6;
+    color: var(--light-gray);
   }
 `;
 
@@ -146,7 +166,7 @@ const Homepage = () => {
           Take control of your credit and expenses with Cibilize, the modern
           fintech dashboard designed for clarity, growth, and peace of mind.
         </HeroSubtitle>
-        <CallToActionButton>Get Started</CallToActionButton>
+        <CallToActionButton to="/signup-flow">Get Started</CallToActionButton>
       </HeroSection>
 
       <ContentContainer>

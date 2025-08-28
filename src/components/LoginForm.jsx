@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import axios from "axios";
+
+const glow = keyframes`
+  0% { box-shadow: 0 0 5px var(--accent-purple); }
+  50% { box-shadow: 0 0 10px var(--accent-blue), 0 0 20px var(--accent-blue); }
+  100% { box-shadow: 0 0 5px var(--accent-purple); }
+`;
 
 const FormWrapper = styled.div`
   width: 100%;
@@ -12,7 +19,7 @@ const FormTitle = styled.h3`
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 20px;
-  background: linear-gradient(45deg, #86a8e7, #5ffbf1);
+  background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
@@ -35,17 +42,18 @@ const InputGroup = styled.div`
 
 const Input = styled.input`
   width: 100%;
-  padding: 12px 15px;
+  padding: 15px;
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 8px;
-  color: white;
-  font-size: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: var(--light-gray);
+  font-size: 17px;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
   &:focus {
-    border-color: #5ffbf1;
+    border-color: var(--accent-blue);
+    animation: ${glow} 1.5s infinite ease-in-out;
   }
 
   &::placeholder {
@@ -56,9 +64,9 @@ const Input = styled.input`
 const Label = styled.label`
   position: absolute;
   left: 15px;
-  top: 12px;
+  top: 15px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 16px;
+  font-size: 17px;
   pointer-events: none;
   transition: all 0.3s ease;
   background: transparent;
@@ -68,19 +76,19 @@ const Label = styled.label`
     top: -10px;
     left: 10px;
     font-size: 12px;
-    color: #5ffbf1;
-    background: #0d0d0d;
+    color: var(--accent-blue);
+    background: var(--dark-black);
     padding: 0 5px;
     border-radius: 4px;
   }
 `;
 
 const SubmitButton = styled.button`
-  background: linear-gradient(45deg, #d16ba5, #5ffbf1);
+  background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
   border: none;
   border-radius: 50px;
   padding: 15px 40px;
-  color: white;
+  color: var(--dark-black);
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -96,7 +104,7 @@ const LoginForm = ({ onSuccessAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Login attempt:", { email, password });
     onSuccessAuth();

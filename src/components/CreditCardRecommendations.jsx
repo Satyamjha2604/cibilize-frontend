@@ -108,7 +108,7 @@ const PageTitle = styled.h2`
   font-size: 40px;
   font-weight: 700;
   margin-bottom: 20px;
-  background: linear-gradient(45deg, var(--electric-blue), var(--bright-cyan));
+  background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
@@ -116,8 +116,8 @@ const PageTitle = styled.h2`
 const QuestionCard = styled.div`
   &.glass-card {
     width: 100%;
-    max-width: 600px;
-    padding: 40px;
+    max-width: 700px;
+    padding: 50px;
     position: relative;
     z-index: 10;
     display: flex;
@@ -129,9 +129,12 @@ const QuestionCard = styled.div`
 `;
 
 const QuestionText = styled.h3`
-  font-size: 28px;
+  font-size: 32px;
   margin-bottom: 30px;
-  color: var(--light-blue);
+  color: var(--light-gray);
+  background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 const OptionsGrid = styled.div`
@@ -145,24 +148,25 @@ const OptionsGrid = styled.div`
 const OptionButton = styled.button`
   background: ${(props) =>
     props.selected
-      ? "linear-gradient(45deg, var(--electric-blue), var(--bright-cyan))"
-      : "rgba(224, 247, 250, 0.1)"};
-  border: 1px solid
-    ${(props) => (props.selected ? "transparent" : "rgba(224, 247, 250, 0.2)")};
+      ? "linear-gradient(45deg, var(--accent-purple), var(--accent-blue))"
+      : "rgba(255, 255, 255, 0.1)"};
+  border: 2px solid
+    ${(props) =>
+      props.selected ? "var(--accent-blue)" : "rgba(255, 255, 255, 0.2)"};
   border-radius: 15px;
-  padding: 20px;
+  padding: 25px 20px;
   color: ${(props) =>
-    props.selected ? "var(--navy-blue)" : "var(--light-blue)"};
+    props.selected ? "var(--dark-black)" : "var(--light-gray)"};
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: ${(props) =>
-    props.selected ? "0 0 15px var(--bright-cyan)" : "none"};
+    props.selected ? "0 0 15px var(--accent-blue)" : "none"};
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 15px var(--electric-blue);
+    box-shadow: 0 0 15px var(--accent-purple);
   }
 `;
 
@@ -173,11 +177,11 @@ const NavigationButtons = styled.div`
 `;
 
 const NavButton = styled.button`
-  background: linear-gradient(45deg, var(--electric-blue), var(--bright-cyan));
+  background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
   border: none;
   border-radius: 50px;
   padding: 12px 30px;
-  color: var(--navy-blue);
+  color: var(--dark-black);
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -216,7 +220,7 @@ const RecommendedCard = styled.div`
 
     &:hover {
       transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), 0 0 25px var(--electric-blue);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), 0 0 25px var(--accent-purple);
     }
   }
 `;
@@ -233,7 +237,7 @@ const CardImage = styled.img`
 const CardName = styled.h4`
   font-size: 24px;
   margin-bottom: 10px;
-  background: linear-gradient(45deg, var(--electric-blue), var(--bright-cyan));
+  background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
@@ -248,7 +252,7 @@ const BenefitsList = styled.ul`
     opacity: 0.9;
     &:before {
       content: "• ";
-      color: var(--bright-cyan);
+      color: var(--accent-blue);
       font-weight: bold;
       display: inline-block;
       width: 1em;
@@ -258,11 +262,11 @@ const BenefitsList = styled.ul`
 `;
 
 const ApplyButton = styled.a`
-  background: linear-gradient(45deg, var(--electric-blue), var(--bright-cyan));
+  background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
   border: none;
   border-radius: 50px;
   padding: 15px 30px;
-  color: var(--navy-blue);
+  color: var(--dark-black);
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);

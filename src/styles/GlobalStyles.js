@@ -2,52 +2,68 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    --navy-blue: #0a192f;
-    --deep-teal: #0b7070;
-    --dark-purple: #0b0a2e;
-    --electric-blue: #00E6FF;
-    --bright-cyan: #00FFFF;
-    --light-blue: #E0F7FA;
-    --card-bg: rgba(224, 247, 250, 0.1);
+    --dark-black: #0A0A0A;
+    --card-dark: rgba(30, 30, 30, 0.5);
+    --light-gray: #EFEFEF;
+    --accent-purple: #9D4EDD;
+    --accent-pink: #C77DFF;
+    --accent-blue: #90E0EF;
   }
   
   body {
     margin: 0;
     font-family: 'Poppins', 'Inter', sans-serif;
-    background: linear-gradient(135deg, var(--navy-blue), var(--deep-teal), var(--dark-purple));
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
-    color: var(--light-blue);
+    background-color: var(--dark-black);
+    color: var(--light-gray);
     min-height: 100vh;
+    overflow-x: hidden; /* Prevents horizontal scroll from gradients */
   }
-  
-  @keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+
+  /*
+    Ultra-Premium Background Effect
+    This creates a subtle, glowing, and moving background that feels dynamic and high-tech.
+  */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -50vh;
+    left: -50vw;
+    width: 200vw;
+    height: 200vh;
+    background: radial-gradient(circle at 75% 25%, rgba(157, 78, 221, 0.1), transparent 50%),
+                radial-gradient(circle at 25% 75%, rgba(144, 224, 239, 0.1), transparent 50%);
+    animation: backgroundShift 20s infinite alternate;
+    z-index: -1;
+  }
+
+  @keyframes backgroundShift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
   }
   
   .glass-card {
-    background: var(--card-bg);
+    background: var(--card-dark);
     border-radius: 20px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(224, 247, 250, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 30px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
   .glass-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5), 
+                0 0 10px rgba(157, 78, 221, 0.5); /* Subtle hover glow */
   }
 
   .cta-button {
-    background: linear-gradient(45deg, var(--electric-blue), var(--bright-cyan));
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
     border: none;
     border-radius: 50px;
     padding: 10px 25px;
-    color: var(--navy-blue);
+    color: var(--dark-black);
     font-weight: 600;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);

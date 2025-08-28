@@ -50,7 +50,7 @@ const Card = styled.div`
 
     &:hover {
       transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), 0 0 25px var(--electric-blue);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), 0 0 25px var(--accent-blue); /* Adjusted hover glow */
     }
   }
 `;
@@ -63,13 +63,13 @@ const ScoreCircle = styled.div`
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  background: rgba(224, 247, 250, 0.1);
+  background: rgba(255, 255, 255, 0.05); /* Softer inner background */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin-bottom: 25px;
-  border: 4px solid var(--electric-blue);
+  border: 4px solid var(--accent-blue); /* Border color */
   position: relative;
 
   &:before {
@@ -82,7 +82,7 @@ const ScoreCircle = styled.div`
     border-radius: 50%;
     background: radial-gradient(
       circle at center,
-      var(--electric-blue) 0%,
+      var(--accent-blue) 0%,
       transparent 70%
     );
     filter: blur(20px);
@@ -94,10 +94,14 @@ const ScoreCircle = styled.div`
 const Score = styled.span`
   font-size: 80px;
   font-weight: 800;
-  background: linear-gradient(45deg, var(--bright-cyan), var(--electric-blue));
+  background: linear-gradient(
+    45deg,
+    var(--accent-pink),
+    var(--accent-blue)
+  ); /* Gradient for score text */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 15px rgba(0, 230, 255, 0.5);
+  text-shadow: 0 0 15px rgba(144, 224, 239, 0.5); /* Text glow */
 `;
 
 const ChartCard = styled(Card)`
@@ -119,11 +123,11 @@ const RecommendedCardsContainer = styled.div`
 `;
 
 const CreditCardWrapper = styled.div`
-  background: rgba(224, 247, 250, 0.08);
+  background: rgba(255, 255, 255, 0.08); /* Lighter card background */
   border-radius: 20px;
   padding: 20px;
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(224, 247, 250, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   width: 300px;
@@ -132,7 +136,7 @@ const CreditCardWrapper = styled.div`
 
   &:hover {
     transform: translateY(-12px) scale(1.04);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5), 0 0 30px var(--bright-cyan);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5), 0 0 30px var(--accent-pink); /* Hover glow */
   }
 
   @media (max-width: 768px) {
@@ -151,9 +155,9 @@ const CreditCard = styled.div`
     font-size: 24px;
     background: linear-gradient(
       45deg,
-      var(--electric-blue),
-      var(--bright-cyan)
-    );
+      var(--accent-purple),
+      var(--accent-pink)
+    ); /* Gradient for card title */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -161,6 +165,7 @@ const CreditCard = styled.div`
     font-size: 17px;
     opacity: 0.9;
     margin-bottom: 20px;
+    color: var(--light-gray);
   }
 `;
 
@@ -189,43 +194,47 @@ const InputGroup = styled.div`
 const Label = styled.label`
   font-weight: 500;
   font-size: 18px;
-  color: var(--light-blue);
-  text-shadow: 0 0 8px rgba(224, 247, 250, 0.3);
+  color: var(--light-gray);
+  text-shadow: 0 0 8px rgba(239, 239, 239, 0.3); /* Label text shadow */
 `;
 
 const Select = styled.select`
   padding: 15px;
-  border: 1px solid rgba(224, 247, 250, 0.2);
-  background: rgba(224, 247, 250, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
-  color: var(--light-blue);
+  color: var(--light-gray);
   font-size: 17px;
   outline: none;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--light-blue)' width='24px' height='24px'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--light-gray)' width='24px' height='24px'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 15px top 50%;
   cursor: pointer;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 
   &:hover {
-    box-shadow: 0 0 8px var(--electric-blue);
+    box-shadow: 0 0 8px var(--accent-blue);
+  }
+  &:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 10px var(--accent-blue);
   }
 `;
 
 const StyledInput = styled.input`
   padding: 15px;
-  border: 1px solid rgba(224, 247, 250, 0.2);
-  background: rgba(224, 247, 250, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
-  color: var(--light-blue);
+  color: var(--light-gray);
   font-size: 17px;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
   &:focus {
-    border-color: var(--electric-blue);
-    box-shadow: 0 0 8px var(--electric-blue);
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 10px var(--accent-blue);
   }
 `;
 
@@ -237,30 +246,31 @@ const resultRise = keyframes`
 const ResultContainer = styled.div`
   margin-top: 30px;
   padding: 25px;
-  background: rgba(224, 247, 250, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   backdrop-filter: blur(8px);
   animation: ${resultRise} 0.6s ease-out;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid rgba(224, 247, 250, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(144, 224, 239, 0.3); /* Result box glow */
 `;
 
 const ResultScore = styled.p`
   font-size: 48px;
   font-weight: 700;
   margin: 0;
-  background: linear-gradient(45deg, var(--electric-blue), var(--bright-cyan));
+  background: linear-gradient(45deg, var(--accent-pink), var(--accent-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  text-shadow: 0 0 10px rgba(144, 224, 239, 0.5);
 `;
 
 const ResultMessage = styled.p`
   font-size: 20px;
   font-weight: 600;
-  color: var(--light-blue);
+  color: var(--light-gray);
   margin: 10px 0 0 0;
 `;
 
@@ -284,7 +294,7 @@ const ProgressBarContainer = styled.div`
   width: 85%;
   max-width: 550px;
   height: 30px;
-  background: rgba(224, 247, 250, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   margin: 40px auto 25px auto;
   overflow: hidden;
@@ -293,7 +303,11 @@ const ProgressBarContainer = styled.div`
 
 const ProgressBar = styled.div`
   height: 100%;
-  background: linear-gradient(90deg, var(--electric-blue), var(--bright-cyan));
+  background: linear-gradient(
+    90deg,
+    var(--accent-purple),
+    var(--accent-pink)
+  ); /* Gradient for progress */
   width: ${(props) => props.progress}%;
   transition: width 0.8s ease-in-out;
   border-radius: 15px 0 0 15px;
@@ -303,16 +317,16 @@ const ProgressBar = styled.div`
   padding-right: 15px;
   font-weight: bold;
   font-size: 16px;
-  color: var(--navy-blue);
+  color: var(--dark-black);
   white-space: nowrap;
 `;
 
 const GoalPercentageText = styled.p`
   font-size: 24px;
   font-weight: 700;
-  color: var(--electric-blue);
+  color: var(--accent-blue);
   margin-top: 15px;
-  text-shadow: 0 0 8px rgba(0, 230, 255, 0.4);
+  text-shadow: 0 0 8px rgba(144, 224, 239, 0.4);
 `;
 
 const ScoreBreakdownCard = styled(Card)`
@@ -333,7 +347,7 @@ const BreakdownItem = styled.li`
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  border-bottom: 1px solid rgba(224, 247, 250, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 
   &:last-child {
     border-bottom: none;
@@ -342,6 +356,7 @@ const BreakdownItem = styled.li`
   p {
     margin: 0;
     font-size: 18px;
+    color: var(--light-gray);
   }
 `;
 
@@ -411,10 +426,24 @@ const Dashboard = () => {
         <h2>Expense Overview</h2>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={data}>
-            <XAxis dataKey="name" stroke="var(--light-blue)" />
-            <YAxis stroke="var(--light-blue)" />
+            <XAxis dataKey="name" stroke="var(--light-gray)" />
+            <YAxis stroke="var(--light-gray)" />
             <Tooltip />
-            <Bar dataKey="value" fill="var(--electric-blue)" />
+            <Bar dataKey="value" fill="url(#colorUv)" />
+            <defs>
+              <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                <stop
+                  offset="5%"
+                  stopColor="var(--accent-purple)"
+                  stopOpacity={0.8}
+                />
+                <stop
+                  offset="95%"
+                  stopColor="var(--accent-blue)"
+                  stopOpacity={0}
+                />
+              </linearGradient>
+            </defs>
           </BarChart>
         </ResponsiveContainer>
       </ChartCard>

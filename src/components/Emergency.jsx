@@ -1,21 +1,9 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 
-const pulse = keyframes`
-  0% { transform: scale(1) translate(-50%, -50%); opacity: 0.6; }
-  50% { transform: scale(1.2) translate(-50%, -50%); opacity: 0.8; }
-  100% { transform: scale(1) translate(-50%, -50%); opacity: 0.6; }
-`;
-
 const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 `;
 
 const slideIn = keyframes`
@@ -23,10 +11,16 @@ const slideIn = keyframes`
   to { transform: translateX(0); opacity: 1; }
 `;
 
+const pulsate = keyframes`
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(157, 78, 221, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(157, 78, 221, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(157, 78, 221, 0); }
+`;
+
 const glow = keyframes`
-  0% { box-shadow: 0 0 5px var(--electric-blue); }
-  50% { box-shadow: 0 0 10px var(--bright-cyan), 0 0 20px var(--bright-cyan); }
-  100% { box-shadow: 0 0 5px var(--electric-blue); }
+  0% { box-shadow: 0 0 5px var(--accent-purple); }
+  50% { box-shadow: 0 0 10px var(--accent-blue), 0 0 20px var(--accent-blue); }
+  100% { box-shadow: 0 0 5px var(--accent-purple); }
 `;
 
 const EmergencyContainer = styled.div`
@@ -40,18 +34,8 @@ const EmergencyContainer = styled.div`
   min-height: 80vh;
   animation: ${fadeIn} 0.8s ease-out;
 
-  &:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, var(--electric-blue), transparent 60%);
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    animation: ${pulse} 15s infinite ease-in-out;
-    z-index: 1;
+  @media (max-width: 768px) {
+    padding: 30px;
   }
 `;
 
@@ -65,7 +49,7 @@ const FormCard = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), 0 0 25px var(--electric-blue);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), 0 0 25px var(--accent-blue);
   }
 `;
 
@@ -73,7 +57,7 @@ const FormTitle = styled.h2`
   font-size: 44px;
   font-weight: 700;
   margin-bottom: 20px;
-  background: linear-gradient(45deg, var(--electric-blue), var(--bright-cyan));
+  background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
@@ -95,16 +79,16 @@ const InputGroup = styled.div`
 const Input = styled.input`
   width: 100%;
   padding: 15px;
-  background: rgba(224, 247, 250, 0.1);
-  border: 1px solid rgba(224, 247, 250, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  color: var(--light-blue);
+  color: var(--light-gray);
   font-size: 17px;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
   &:focus {
-    border-color: var(--electric-blue);
+    border-color: var(--accent-blue);
     animation: ${glow} 1.5s infinite ease-in-out;
   }
 `;
@@ -112,21 +96,21 @@ const Input = styled.input`
 const Select = styled.select`
   width: 100%;
   padding: 15px;
-  background: rgba(224, 247, 250, 0.1);
-  border: 1px solid rgba(224, 247, 250, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  color: var(--light-blue);
+  color: var(--light-gray);
   font-size: 17px;
   outline: none;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--light-blue)' width='24px' height='24px'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--light-gray)' width='24px' height='24px'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 15px top 50%;
   cursor: pointer;
   transition: box-shadow 0.3s ease;
 
   &:hover {
-    box-shadow: 0 0 8px var(--electric-blue);
+    box-shadow: 0 0 8px var(--accent-blue);
   }
 `;
 
@@ -134,12 +118,11 @@ const Label = styled.label`
   position: absolute;
   left: 15px;
   top: 15px;
-  color: rgba(224, 247, 250, 0.6);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 17px;
   pointer-events: none;
   transition: all 0.3s ease;
 
-  /* The core fix is here: always float the label for the Select */
   ${Input}:focus + &,
   ${Input}:not(:placeholder-shown) + &,
   ${Select}:focus + &,
@@ -147,8 +130,8 @@ const Label = styled.label`
     top: -10px;
     left: 10px;
     font-size: 12px;
-    color: var(--electric-blue);
-    background: var(--navy-blue);
+    color: var(--accent-blue);
+    background: var(--dark-black);
     padding: 0 5px;
   }
 `;
@@ -166,24 +149,18 @@ const StepIndicator = styled.div`
   height: 15px;
   border-radius: 50%;
   background: ${(props) =>
-    props.active ? "var(--electric-blue)" : "rgba(224, 247, 250, 0.3)"};
+    props.active ? "var(--accent-blue)" : "rgba(255, 255, 255, 0.3)"};
   transition: background 0.3s ease;
   box-shadow: ${(props) =>
-    props.active ? "0 0 10px var(--bright-cyan)" : "none"};
-`;
-
-const pulsate = keyframes`
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 230, 255, 0.7); }
-  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(0, 230, 255, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 230, 255, 0); }
+    props.active ? "0 0 10px var(--accent-blue)" : "none"};
 `;
 
 const SubmitButton = styled.button`
-  background: linear-gradient(45deg, var(--electric-blue), var(--bright-cyan));
+  background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
   border: none;
   border-radius: 50px;
   padding: 15px 40px;
-  color: var(--navy-blue);
+  color: var(--dark-black);
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -198,38 +175,38 @@ const SubmitButton = styled.button`
   }
 `;
 
-const modalFadeIn = keyframes`
-  from { opacity: 0; transform: translate(-50%, -45%); }
-  to { opacity: 1; transform: translate(-50%, -50%); }
-`;
-
-const Modal = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
-  height: 250px;
+const SuccessContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  z-index: 1001;
-  background: rgba(224, 247, 250, 0.25);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-radius: 20px;
-  border: 1px solid rgba(224, 247, 250, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  animation: ${modalFadeIn} 0.5s ease-in-out;
-  color: var(--light-blue);
+  gap: 20px;
+  padding: 20px;
+  animation: ${fadeIn} 0.5s ease-in-out;
+  color: var(--light-gray);
+
+  h3 {
+    font-size: 28px;
+    margin: 0;
+    background: linear-gradient(
+      45deg,
+      var(--accent-purple),
+      var(--accent-blue)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  p {
+    margin: 0;
+    font-size: 16px;
+    opacity: 0.8;
+  }
 `;
 
 const StatusMessage = styled.p`
   margin-top: 20px;
   font-size: 20px;
   font-weight: 600;
-  color: var(--electric-blue);
+  color: var(--accent-blue);
 `;
 
 const Emergency = () => {
@@ -356,10 +333,13 @@ const Emergency = () => {
           </StatusMessage>
         )}
         {submissionStatus === "success" && (
-          <Modal>
+          <SuccessContent>
             <h3>Request Sent!</h3>
             <p>A representative will contact you shortly.</p>
-          </Modal>
+            <SubmitButton onClick={() => setSubmissionStatus("idle")}>
+              Go Back
+            </SubmitButton>
+          </SuccessContent>
         )}
       </FormCard>
     </EmergencyContainer>

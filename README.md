@@ -1,12 +1,44 @@
-# React + Vite
+# Cibilize: A Comprehensive Fintech Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Cibilize is a modern fintech application designed to empower individuals with better financial management and decision-making tools. The app aims to solve the problem of many individuals lacking an understanding of their CIBIL scores and missing out on financial opportunities like maximizing credit card rewards.
 
-Currently, two official plugins are available:
+Our target audience includes young adults (18-30 years) who are just starting their financial journey, individuals with low CIBIL scores, and existing credit card holders who want to improve their financial management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+### Key Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Credit Score Dashboard**: A dynamic dashboard that visualizes your CIBIL score and provides a breakdown of the factors influencing it.
+- **Credit Score Simulator**: An interactive tool to help users understand how different financial actions can affect their credit score.
+- **Expense Tracker**: A comprehensive tool to track and categorize expenses, with a visual bar chart to show spending habits.
+- **Financial Calculators**: Includes powerful calculators for EMI, SIP, and Lumpsum investments to aid in financial planning.
+- **Credit Card Recommendations**: A questionnaire-based tool that recommends credit cards tailored to a user's spending habits and financial profile.
+- **Emergency Funding**: A feature to provide an immediate financial safety net for credit card users who are unable to make payments.
+- **Secure Authentication**: A robust login and signup system using secure methods to protect user data.
+
+---
+
+### Tech Stack
+
+- **Frontend**: Built with **React** and **Vite** for a fast, responsive, and modern user experience. We use **Styled Components** for elegant styling.
+- **Backend**: Powered by **Node.js with Express.js** to create a lightweight and scalable API.
+- **Database**: **MongoDB** is used to provide a reliable, structured database for storing user and financial data.
+- **Authentication**: Secure user sessions are handled using **JSON Web Tokens (JWT)**.
+
+---
+
+### Installation and Setup
+
+To get a copy of this project up and running on your local machine for development, follow these steps:
+
+**1. Clone the Repositories**
+
+```bash
+# Frontend
+git clone [https://github.com/Satyamjha2604/cibilize-frontend.git](https://github.com/Satyamjha2604/cibilize-frontend.git)
+cd cibilize-frontend
+
+# Backend
+git clone [https://github.com/Satyamjha2604/cibilize-backend.git](https://github.com/Satyamjha2604/cibilize-backend.git)
+cd cibilize-backend
+```

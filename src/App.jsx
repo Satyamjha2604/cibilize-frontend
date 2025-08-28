@@ -9,7 +9,7 @@ import Expenses from "./components/Expenses.jsx";
 import AuthModal from "./components/AuthModal.jsx";
 import Profile from "./components/Profile.jsx";
 import CreditCardRecommendations from "./components/CreditCardRecommendations.jsx";
-import SignupPage from "./components/SignupForm.jsx"; // <-- New import
+import SignupPage from "./components/SignupPage.jsx"; // <-- New import
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

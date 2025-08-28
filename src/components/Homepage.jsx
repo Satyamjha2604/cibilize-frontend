@@ -21,6 +21,9 @@ const HeroSection = styled.div`
   margin-bottom: 100px;
   max-width: 900px;
   width: 100%;
+  display: flex; /* Added to make it a flex container */
+  flex-direction: column; /* Added to stack children vertically */
+  align-items: center; /* Centers children horizontally */
 
   @media (max-width: 768px) {
     margin-bottom: 60px;
@@ -86,6 +89,7 @@ const CallToActionButton = styled(Link)`
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-top: 40px;
   text-decoration: none;
+  display: inline-block; /* Ensure it responds to parent's centering */
 
   &:hover {
     transform: translateY(-8px);

@@ -18,5 +18,17 @@ model User {
   mobile    String?
   aadhaar   String?
   pan       String?
-  createdAt DateTime @default(now()) @db.DateTime(6) // <-- Change this line
+  createdAt DateTime @default(now()) @db.DateTime(6)
+  expenses  Expense[]
+}
+
+model Expense {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+  description String
+  amount      Float
+  category    String
+  date        String
+  createdAt   DateTime @default(now()) @db.DateTime(6)
 }

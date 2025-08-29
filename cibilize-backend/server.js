@@ -13,8 +13,9 @@ const prisma = new PrismaClient();
 app.use(express.json({ extended: false }));
 app.use(cors());
 
-// Define Auth Routes
+// Define all routes before starting the server
 app.use("/api/auth", require("./routes/auth"));
+app.use("/api/expenses", require("./routes/expenses"));
 
 // Simple test route
 app.get("/", (req, res) => {
